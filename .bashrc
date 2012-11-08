@@ -9,6 +9,13 @@ if [ "$TERM" != "dumb" ]; then
     #eval "`dircolors -b`"
     alias less='less -R'
 
+    export conga='deploy@192.168.0.31'
+    export bongo='deploy@staging.ir.charanga.com'
+    export live='deploy@ir.charanga.com'
+    alias conga='ssh $conga'
+    alias bongo='ssh $bongo'
+    alias live='ssh $live'
+
     # don't "wuff wuff" and listen for control c, etc
     #alias screen='TERM=screen screen'
 
