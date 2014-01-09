@@ -5,12 +5,20 @@ escape ^Gg
 defscrollback 1024
 
 # http://superuser.com/questions/126606/how-to-get-mac-os-x-terminal-app-and-screen-vim-scrolling-to-play-nice/316900#316900
-#termcapinfo xterm-256color|xterm-color|xterm|xterms|xs|rxvt ti@:te@
-termcapinfo xterm ti@:te@
-termcapinfo xterm-color ti@:te@
+termcapinfo * ti@:te@
+
+# don't preserve vim and other fullscreen progs in the buffer, once quit
+altscreen on
 
 # allow bold colors - necessary for some reason
 attrcolor b ".I"
+# tell screen how to set colors. AB = background, AF=foreground
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+termcapinfo xterm-256color "Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm"
+# erase background with current bg color
+defbce "on"
+# set TERM
+term screen-256color-bce
 
 #change the hardstatus settings to give an window list at the bottom of the
 #screen, with the time and date and with the current window highlighted
